@@ -1,0 +1,21 @@
+# docker-compose.yml
+version: '3.1'
+services:
+  db:
+    image: postgres
+    container_name: pcp-postgres
+    volumes:
+       - ./postgres:/var/lib/postgresql/data2
+    restart: always
+    ports:
+      - 10432:5432
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+
+  adminer:
+    image: adminer
+    container_name: pcp-adminer
+    restart: always
+    ports:
+      - 10433:8080
